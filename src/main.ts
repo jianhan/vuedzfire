@@ -1,13 +1,24 @@
 import '@babel/polyfill'
 import Vue from 'vue';
-import './plugins/vuetify'
 import App from './App.vue';
-import router from '@/routes';
-import store from '@/store';
-import './registerServiceWorker';
-import firebase from 'firebase'
-import firebaseConfigs from './configs/firebase'
 
+// vuetify
+import './plugins/vuetify'
+
+
+// router
+import router from '@/routes';
+
+// vuex
+import store from '@/store';
+
+// service workder
+import './registerServiceWorker';
+
+// firebase
+import firebase from 'firebase'
+import { firebaseConfigs } from './configs/firebase'
+import '../node_modules/firebaseui/dist/firebaseui.css'
 Vue.config.productionTip = false;
 
 new Vue({
