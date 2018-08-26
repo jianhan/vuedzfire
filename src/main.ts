@@ -16,9 +16,11 @@ import store from '@/store';
 import './registerServiceWorker';
 
 // firebase
+
 import firebase from 'firebase'
-import { firebaseConfigs } from './configs/firebase'
 import '../node_modules/firebaseui/dist/firebaseui.css'
+import { firebaseConfigs } from './configs/firebase'
+
 Vue.config.productionTip = false;
 
 new Vue({
