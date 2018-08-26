@@ -35,20 +35,6 @@
             <v-container fluid fill-height>
                 <v-layout justify-center align-center>
                     <router-view/>
-                    <v-flex shrink>
-                        <v-tooltip right>
-                            <v-btn slot="activator" :href="source" icon large target="_blank">
-                                <v-icon large>code</v-icon>
-                            </v-btn>
-                            <span>Source</span>
-                        </v-tooltip>
-                        <v-tooltip right>
-                            <v-btn slot="activator" icon large href="https://codepen.io/johnjleider/pen/KQrPKJ" target="_blank">
-                                <v-icon large>mdi-codepen</v-icon>
-                            </v-btn>
-                            <span>Codepen</span>
-                        </v-tooltip>
-                    </v-flex>
                 </v-layout>
             </v-container>
         </v-content>
@@ -61,20 +47,22 @@
     </v-app>
 </template>
 
-<script>
-import { VTooltip } from 'vuetify/es5/components/VTooltip';
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-export default {
-  components: { VTooltip },
-  name: 'mainLayout',
-  data: () => ({
-    drawer: true,
-    drawerRight: true,
-    right: null,
-    left: null,
-  }),
+@Component({
+  name: 'main-layout',
   props: {
-    source: String,
-  },
-};
+
+  }
+  })
+
+export default class MainLayout extends Vue {
+        // Data
+        drawer = false
+        drawerRight = false
+        right = false
+        left = false
+}
 </script>
