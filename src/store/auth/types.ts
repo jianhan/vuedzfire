@@ -1,7 +1,7 @@
 export interface User {
-  firstName: string;
-  lastName: string;
+  displayName: string;
   email: string;
+  photoURL: string;
 }
 
 export interface AuthState {
