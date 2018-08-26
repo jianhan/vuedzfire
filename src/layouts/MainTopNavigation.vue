@@ -14,8 +14,15 @@
         </v-navigation-drawer>
         <v-toolbar color="pink darken-1" dark fixed app clipped-right>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-            <v-toolbar-title>Toolbar</v-toolbar-title>
+            <v-toolbar-title class="ml-0 pl-3 pr-3">Toolbar</v-toolbar-title>
+            <v-text-field flat solo-inverted hide-details prepend-inner-icon="search"
+                          label="Search"
+                          class="hidden-sm-and-down"></v-text-field>
             <v-spacer></v-spacer>
+            <v-btn icon>
+                <v-icon>lock</v-icon>
+            </v-btn>
+            <Auth/>
             <v-toolbar-side-icon @click.stop="drawerRight = !drawerRight"></v-toolbar-side-icon>
         </v-toolbar>
         <v-navigation-drawer v-model="drawer" fixed app>
@@ -38,8 +45,15 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import VTextField from 'vuetify/es5/components/VTextField';
+import Auth from '@/components/Auth.vue';
 
-@Component
+@Component({
+  components: {
+  VTextField,
+  Auth
+  }
+  })
 export default class MainTopNavigation extends Vue {
         // Data
         drawer = false
