@@ -20,7 +20,11 @@
             <v-btn icon>
                 <v-icon>lock</v-icon>
             </v-btn>
-            <AuthDialog/>
+            <AuthDialog>
+                <v-btn color="primary" dark @click.stop="showDialog" slot="btn">
+                    Open Dialog
+                </v-btn>
+            </AuthDialog>
             <v-toolbar-side-icon @click.stop="drawerRight = !drawerRight"></v-toolbar-side-icon>
         </v-toolbar>
         <v-navigation-drawer v-model="drawer" fixed app>
@@ -41,20 +45,20 @@
 </template>
 
 <script lang="ts">
-    import Vue from "vue";
-    import Component from "vue-class-component";
-    import AuthDialog from "@/components/AuthDialog.vue";
-    
-    @Component({
-        components: {
-            AuthDialog
-        }
-    })
-    export default class MainTopNavigation extends Vue {
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import AuthDialog from '@/components/AuthDialog.vue';
+
+@Component({
+  components: {
+  AuthDialog
+  }
+  })
+export default class MainTopNavigation extends Vue {
         // Data
         drawer = false;
         drawerRight = false;
         right = false;
         left = false;
-    }
+}
 </script>
