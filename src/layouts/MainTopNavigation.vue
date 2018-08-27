@@ -17,12 +17,9 @@
             <v-toolbar-title class="ml-0 pl-3 pr-3">Toolbar</v-toolbar-title>
             <v-text-field flat solo-inverted hide-details prepend-inner-icon="search" label="Search" class="hidden-sm-and-down"></v-text-field>
             <v-spacer></v-spacer>
-            <v-btn icon>
-                <v-icon>lock</v-icon>
-            </v-btn>
             <AuthDialog>
-                <v-btn color="primary" dark @click.stop="showDialog" slot="btn">
-                    Open Dialog
+                <v-btn icon @click.stop="showDialog" slot="btn">
+                    <v-icon>lock</v-icon>
                 </v-btn>
             </AuthDialog>
             <v-toolbar-side-icon @click.stop="drawerRight = !drawerRight"></v-toolbar-side-icon>
@@ -45,20 +42,28 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import AuthDialog from '@/components/AuthDialog.vue';
-
-@Component({
-  components: {
-  AuthDialog
-  }
-  })
-export default class MainTopNavigation extends Vue {
-        // Data
-        drawer = false;
-        drawerRight = false;
-        right = false;
-        left = false;
-}
+    import AuthDialog from '@/components/AuthDialog.vue'
+    import {
+        mapMutations
+    } from 'vuex'
+    import * as mutationTypes from '@/store/mutation-types'
+    
+    export default {
+        components: {
+            AuthDialog
+        },
+        data() {
+            return {
+                drawer: false,
+                drawerRight: false,
+                right: false,
+                left: false
+            }
+        },
+        methods: {
+            ...mapMutations({
+                showDialog: `auth/${mutationTypes.SHOW_AUTH_DIALOG}`
+            })
+        },
+    }
 </script>

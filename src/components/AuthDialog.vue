@@ -12,10 +12,7 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn color="green darken-1" flat="flat" @click="hideDialog">
-                        Disagree
-                    </v-btn>
-                    <v-btn color="green darken-1" flat="flat" @click="hideDialog">
-                        Agree
+                        Close
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -24,17 +21,17 @@
 </template>
 
 <script>
-import firebase from 'firebase';
-import firebaseui from 'firebaseui';
-import VDialog from 'vuetify/es5/components/VDialog';
-import * as VCard from 'vuetify/es5/components/VCard';
-import { firebaseUILoginConfigs } from '../configs/firebase';
-import Vue from 'vue';
+import firebase from 'firebase'
+import firebaseui from 'firebaseui'
+import VDialog from 'vuetify/es5/components/VDialog'
+import * as VCard from 'vuetify/es5/components/VCard'
+import { firebaseUILoginConfigs } from '../configs/firebase'
+import Vue from 'vue'
 import {
   mapMutations,
   mapState,
-} from 'vuex';
-import * as mutationTypes from '@/store/mutation-types';
+} from 'vuex'
+import * as mutationTypes from '@/store/mutation-types'
 
 export default {
   components: {
