@@ -6,7 +6,8 @@ import { AuthState } from './types';
 
 export const state: AuthState = {
   user: undefined,
-  authError: ''
+  authError: '',
+  showAuthDialog: false
 };
 
 const namespaced: boolean = true;

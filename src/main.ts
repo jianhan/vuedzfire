@@ -32,7 +32,6 @@ new Vue({
     firebase.initializeApp(firebaseConfigs);
     firebase.auth().onAuthStateChanged((user) => {
       if(user) {
-        console.log(user.displayName)
         const loggedInUser:User = {
           displayName: user.displayName === null ? '' : user.displayName,
           email: user.email === null ? '' : user.email,

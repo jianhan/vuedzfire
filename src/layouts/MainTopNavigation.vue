@@ -20,7 +20,7 @@
             <v-btn icon>
                 <v-icon>lock</v-icon>
             </v-btn>
-            <Auth/>
+            <AuthDialog/>
             <v-toolbar-side-icon @click.stop="drawerRight = !drawerRight"></v-toolbar-side-icon>
         </v-toolbar>
         <v-navigation-drawer v-model="drawer" fixed app>
@@ -41,22 +41,20 @@
 </template>
 
 <script lang="ts">
-    import Vue from 'vue';
-    import Component from 'vue-class-component';
-    import VTextField from 'vuetify/es5/components/VTextField';
-    import Auth from '@/components/Auth.vue';
+    import Vue from "vue";
+    import Component from "vue-class-component";
+    import AuthDialog from "@/components/AuthDialog.vue";
     
     @Component({
         components: {
-            VTextField,
-            Auth
+            AuthDialog
         }
     })
     export default class MainTopNavigation extends Vue {
         // Data
-        drawer = false
-        drawerRight = false
-        right = false
-        left = false
+        drawer = false;
+        drawerRight = false;
+        right = false;
+        left = false;
     }
 </script>
