@@ -1,12 +1,13 @@
 import firebase from "firebase";
+import * as env from '@/.env.js'
 
 export const firebaseConfigs = {
-  apiKey: "AIzaSyBhb6tIr2sYjcsPBRpa1LIkoWH6y-tcqf4",
-  authDomain: "vuedz-f4390.firebaseapp.com",
-  databaseURL: "https://vuedz-f4390.firebaseio.com",
-  projectId: "vuedz-f4390",
-  storageBucket: "vuedz-f4390.appspot.com",
-  messagingSenderId: "1061500863546"
+  apiKey: env.FIREBASE_API_KEY,
+  authDomain: env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: env.FIREBASE_DATABASE_URL,
+  projectId: env.FIREBASE_PROJECT_ID,
+  storageBucket: env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: env.FIREBASE_MESSAGING_SENDER_ID
 };
 
 export const firebaseUILoginConfigs = {

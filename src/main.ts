@@ -15,8 +15,10 @@ import store from '@/store';
 // service workder
 import './registerServiceWorker';
 
-// firebase
+// load dot env
+require('dotenv').config()
 
+// firebase
 import firebase from 'firebase'
 import '../node_modules/firebaseui/dist/firebaseui.css'
 import { firebaseConfigs } from './configs/firebase'
