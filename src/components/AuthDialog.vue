@@ -1,6 +1,5 @@
 <template>
     <div class="text-xs-center">
-        {{ isUserLoggedIn }}
         <slot name="loginBtn" v-if="!isUserLoggedIn"></slot>
         <slot name="logoutBtn" v-if="isUserLoggedIn"></slot>
         <v-dialog v-model="canShowDialog" persistent max-width="360">

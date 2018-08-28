@@ -19,10 +19,10 @@
             <v-spacer></v-spacer>
             <AuthDialog>
                 <v-btn icon @click.stop="showDialog" slot="loginBtn">
-                    <v-icon>lock_open</v-icon>
+                    Login
                 </v-btn>
                 <v-btn icon @click.stop="handleLogout" slot="logoutBtn">
-                    <v-icon>lock</v-icon>
+                    Logout
                 </v-btn>
             </AuthDialog>
             <v-toolbar-side-icon @click.stop="drawerRight = !drawerRight"></v-toolbar-side-icon>
@@ -71,11 +71,11 @@
                 showDialog: `auth/${mutationTypes.SHOW_AUTH_DIALOG}`
             }),
             handleLogout() {
-                auth.signOut().then(function() {
-                    console.log('Signed Out');
+                auth.signOut().then(() => {
+                    this.$router.push('/')
                 }, function(error) {
-                    console.error('Sign Out Error', error);
-                });
+                    console.error('Sign Out Error', error)
+                })
             }
         },
     }
