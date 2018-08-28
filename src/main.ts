@@ -19,9 +19,8 @@ import './registerServiceWorker';
 require('dotenv').config()
 
 // firebase
-import firebase from 'firebase'
 import '../node_modules/firebaseui/dist/firebaseui.css'
-import { firebaseConfigs } from './configs/firebase'
+import { auth } from './configs/firebase'
 import * as mutationTypes from './store/mutation-types'
 import { User } from './store/auth/types'
 
@@ -31,8 +30,7 @@ new Vue({
   router,
   store,
   created() {
-    firebase.initializeApp(firebaseConfigs);
-    firebase.auth().onAuthStateChanged((user) => {
+    auth.onAuthStateChanged((user) => {
       if(user) {
         const loggedInUser:User = {
           displayName: user.displayName === null ? '' : user.displayName,

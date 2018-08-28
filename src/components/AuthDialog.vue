@@ -1,6 +1,8 @@
 <template>
     <div class="text-xs-center">
+        {{ isUserLoggedIn }}
         <slot name="loginBtn" v-if="!isUserLoggedIn"></slot>
+        <slot name="logoutBtn" v-if="isUserLoggedIn"></slot>
         <v-dialog v-model="canShowDialog" persistent max-width="360">
             <v-card>
                 <v-card-title class="headline grey lighten-2" primary-title>
@@ -41,12 +43,6 @@
             VDialog,
             ...VCard,
         },
-        methods: {
-            ...mapMutations({
-                showDialog: `auth/${mutationTypes.SHOW_AUTH_DIALOG}`,
-                hideDialog: `auth/${mutationTypes.HIDE_AUTH_DIALOG}`,
-            }),
-        },
         computed: {
             ...mapState({
                 canShowDialog: state => state.auth.showAuthDialog,
@@ -54,6 +50,12 @@
             ...mapGetters({
                 isUserLoggedIn: 'auth/isUserLoggedIn'
             })
+        },
+        methods: {
+            ...mapMutations({
+                showDialog: `auth/${mutationTypes.SHOW_AUTH_DIALOG}`,
+                hideDialog: `auth/${mutationTypes.HIDE_AUTH_DIALOG}`,
+            })        
         },
         mounted() {
             (new firebaseui.auth.AuthUI(firebase.auth())).start('#firebaseui-auth-container', firebaseUILoginConfigs);

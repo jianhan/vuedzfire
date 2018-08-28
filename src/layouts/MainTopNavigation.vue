@@ -19,6 +19,9 @@
             <v-spacer></v-spacer>
             <AuthDialog>
                 <v-btn icon @click.stop="showDialog" slot="loginBtn">
+                    <v-icon>lock_open</v-icon>
+                </v-btn>
+                <v-btn icon @click.stop="handleLogout" slot="logoutBtn">
                     <v-icon>lock</v-icon>
                 </v-btn>
             </AuthDialog>
@@ -41,11 +44,14 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
     import AuthDialog from '@/components/AuthDialog.vue'
     import {
         mapMutations
     } from 'vuex'
+    import {
+        auth
+    } from '@/configs/firebase'
     import * as mutationTypes from '@/store/mutation-types'
     
     export default {
@@ -63,7 +69,14 @@
         methods: {
             ...mapMutations({
                 showDialog: `auth/${mutationTypes.SHOW_AUTH_DIALOG}`
-            })
+            }),
+            handleLogout() {
+                auth.signOut().then(function() {
+                    console.log('Signed Out');
+                }, function(error) {
+                    console.error('Sign Out Error', error);
+                });
+            }
         },
     }
 </script>
