@@ -62,13 +62,10 @@
                 showDialog: `auth/${mutationTypes.SHOW_AUTH_DIALOG}`,
                 hideDialog: `auth/${mutationTypes.HIDE_AUTH_DIALOG}`,
             }),
-            showDialog() {
-                this.$store.commit(`auth/${mutationTypes.SHOW_AUTH_DIALOG}`)
-            },
             handleLogout() {
                 auth.signOut().then(() => {
                     this.$router.push('/')
-                }, function(error) {
+                }, error => {
                     console.error('Sign Out Error', error)
                 })
             }

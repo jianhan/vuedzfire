@@ -14,7 +14,7 @@ const firebaseConfigs = {
 firebase.initializeApp(firebaseConfigs)
 
 const firebaseUILoginConfigs = {
-  signInSuccessUrl: "/",
+  signInSuccessUrl: "/about",
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID

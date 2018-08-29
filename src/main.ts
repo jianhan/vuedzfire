@@ -30,9 +30,10 @@ new Vue({
   router,
   store,
   created() {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(user => {
       if(user) {
         const loggedInUser:User = {
+          uid: user.uid,
           displayName: user.displayName === null ? '' : user.displayName,
           email: user.email === null ? '' : user.email,
           photoURL: user.photoURL === null ? '' : user.photoURL,
