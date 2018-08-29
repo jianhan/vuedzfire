@@ -4,7 +4,7 @@
         <v-content>
             <v-container fluid fill-height>
                 <v-layout justify-center align-center>
-                    <router-view/>
+                    <router-view :key="$route.path"></router-view>
                 </v-layout>
             </v-container>
         </v-content>
@@ -13,19 +13,19 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import MainTopNavigation from './MainTopNavigation.vue';
-import MainFooter from './MainFooter.vue';
-
-@Component({
-  components: {
-  MainTopNavigation,
-  MainFooter
-  }
-  })
-
-export default class MainLayout extends Vue {
-
-}
+    import Vue from 'vue';
+    import Component from 'vue-class-component';
+    import MainTopNavigation from './MainTopNavigation.vue';
+    import MainFooter from './MainFooter.vue';
+    
+    @Component({
+        components: {
+            MainTopNavigation,
+            MainFooter
+        }
+    })
+    
+    export default class MainLayout extends Vue {
+    
+    }
 </script>

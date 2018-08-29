@@ -17,14 +17,7 @@
             <v-toolbar-title class="ml-0 pl-3 pr-3">Toolbar</v-toolbar-title>
             <v-text-field flat solo-inverted hide-details prepend-inner-icon="search" label="Search" class="hidden-sm-and-down"></v-text-field>
             <v-spacer></v-spacer>
-            <AuthDialog>
-                <v-btn icon @click.stop="showDialog" slot="loginBtn">
-                    Login
-                </v-btn>
-                <v-btn icon @click.stop="handleLogout" slot="logoutBtn">
-                    Logout
-                </v-btn>
-            </AuthDialog>
+            <AuthDialog />
             <v-toolbar-side-icon @click.stop="drawerRight = !drawerRight"></v-toolbar-side-icon>
         </v-toolbar>
         <v-navigation-drawer v-model="drawer" fixed app>
@@ -46,13 +39,6 @@
 
 <script>
     import AuthDialog from '@/components/AuthDialog.vue'
-    import {
-        mapMutations
-    } from 'vuex'
-    import {
-        auth
-    } from '@/configs/firebase'
-    import * as mutationTypes from '@/store/mutation-types'
     
     export default {
         components: {
@@ -65,18 +51,6 @@
                 right: false,
                 left: false
             }
-        },
-        methods: {
-            ...mapMutations({
-                showDialog: `auth/${mutationTypes.SHOW_AUTH_DIALOG}`
-            }),
-            handleLogout() {
-                auth.signOut().then(() => {
-                    this.$router.push('/')
-                }, function(error) {
-                    console.error('Sign Out Error', error)
-                })
-            }
-        },
+        }
     }
 </script>

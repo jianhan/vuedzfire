@@ -1,7 +1,11 @@
 <template>
     <div class="text-xs-center">
-        <slot name="loginBtn" v-if="!isUserLoggedIn"></slot>
-        <slot name="logoutBtn" v-if="isUserLoggedIn"></slot>
+        <v-btn icon @click.stop="showDialog" slot="loginBtn" v-show="!isUserLoggedIn">
+            Login
+        </v-btn>
+        <v-btn icon @click.stop="handleLogout" slot="logoutBtn" v-show="isUserLoggedIn">
+            Logout
+        </v-btn>
         <v-dialog v-model="canShowDialog" persistent max-width="360">
             <v-card>
                 <v-card-title class="headline grey lighten-2" primary-title>
@@ -35,6 +39,9 @@
         mapState,
         mapGetters
     } from 'vuex'
+    import {
+        auth
+    } from '@/configs/firebase'
     import * as mutationTypes from '@/store/mutation-types'
     
     export default {
@@ -54,7 +61,17 @@
             ...mapMutations({
                 showDialog: `auth/${mutationTypes.SHOW_AUTH_DIALOG}`,
                 hideDialog: `auth/${mutationTypes.HIDE_AUTH_DIALOG}`,
-            })        
+            }),
+            showDialog() {
+                this.$store.commit(`auth/${mutationTypes.SHOW_AUTH_DIALOG}`)
+            },
+            handleLogout() {
+                auth.signOut().then(() => {
+                    this.$router.push('/')
+                }, function(error) {
+                    console.error('Sign Out Error', error)
+                })
+            }
         },
         mounted() {
             (new firebaseui.auth.AuthUI(firebase.auth())).start('#firebaseui-auth-container', firebaseUILoginConfigs);
