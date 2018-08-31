@@ -24,6 +24,12 @@ const mutations: MutationTree<AuthState> = {
   [mutationTypes.HIDE_AUTH_DIALOG](state) {
     state.showAuthDialog = false
   },
+  [mutationTypes.SET_AUTH_ERROR](state, payload: string) {
+    state.authError = payload
+  },
+  [mutationTypes.CLEAR_AUTH_ERROR](state) {
+    state.authError = ''
+  }
 };
 
 export default mutations;

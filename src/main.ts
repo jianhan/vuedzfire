@@ -32,13 +32,19 @@ new Vue({
   created() {
     auth.onAuthStateChanged(user => {
       if(user) {
-        const loggedInUser:User = {
-          uid: user.uid,
-          displayName: user.displayName === null ? '' : user.displayName,
-          email: user.email === null ? '' : user.email,
-          photoURL: user.photoURL === null ? '' : user.photoURL,
-        }
-        this.$store.commit(`auth/${mutationTypes.USER_LOGGED_IN}`, loggedInUser)
+        user.getIdToken().then(r => {
+          const loggedInUser:User = {
+            uid: user.uid,
+            displayName: user.displayName === null ? '' : user.displayName,
+            email: user.email === null ? '' : user.email,
+            photoURL: user.photoURL === null ? '' : user.photoURL,
+            refreshToken: user.refreshToken,
+            idToken: r
+          }
+          this.$store.commit(`auth/${mutationTypes.USER_LOGGED_IN}`, loggedInUser)
+        }).catch(e => {
+          this.$store.commit(`auth/${mutationTypes.USER_LOGGED_OUT}`)
+        })
       } else {
         this.$store.commit(`auth/${mutationTypes.USER_LOGGED_OUT}`)
       }
