@@ -32,6 +32,9 @@ const mutations: MutationTree<AuthState> = {
   },
   [mutationTypes.CLEAR_AUTH_ERROR](state) {
     state.authError = ''
+  },
+  [mutationTypes.SET_AUTH_LOADING](state, payload: boolean) {
+    state.isLoading = payload
   }
 };
 

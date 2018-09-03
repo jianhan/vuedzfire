@@ -31,10 +31,11 @@ new Vue({
   router,
   store,
   created() {
+    this.setAuthLoading(true)
     auth.onAuthStateChanged(user => {
+      this.setAuthLoading(false)
       if(user) {
         user.getIdToken().then(r => {
-          console.log(r)
           const loggedInUser:User = {
             uid: user.uid,
             displayName: user.displayName === null ? '' : user.displayName,
@@ -57,6 +58,7 @@ new Vue({
     ...mapMutations({
       'userLoggedIn': `auth/${mutationTypes.USER_LOGGED_IN}`,
       'userLoggedOut': `auth/${mutationTypes.USER_LOGGED_OUT}`,
+      'setAuthLoading': `auth/${mutationTypes.SET_AUTH_LOADING}`
     })
   },
   render: h => h(App),
