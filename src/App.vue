@@ -1,15 +1,18 @@
 <template>
   <div id="app">
     <MainLayout/>
+    <AuthLoader/>
   </div>
 </template>
 
 <script>
 import MainLayout from './layouts/MainLayout.vue';
+import AuthLoader from '@/components/AuthLoader'
 
 export default {
   components: {
     MainLayout,
+    AuthLoader
   },
 };
 </script>
