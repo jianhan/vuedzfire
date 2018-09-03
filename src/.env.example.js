@@ -10,3 +10,4 @@ export const FIREBASE_MESSAGING_SENDER_ID = ""
 
 // API service related configs
 export const API = ""
+export const API_TIMEOUT = ""

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/configs/axios";
 
 export default {
   methods: {
