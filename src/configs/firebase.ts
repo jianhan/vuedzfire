@@ -1,6 +1,8 @@
 import firebase from "firebase";
 import 'firebase/firestore'
 import * as env from '@/.env.js'
+import * as mutationTypes from '@/store/mutation-types'
+import { User } from '@/store/auth/types'
 
 const firebaseConfigs = {
   apiKey: env.FIREBASE_API_KEY,

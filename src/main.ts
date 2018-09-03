@@ -23,6 +23,7 @@ import '../node_modules/firebaseui/dist/firebaseui.css'
 import { auth } from './configs/firebase'
 import * as mutationTypes from './store/mutation-types'
 import { User } from './store/auth/types'
+import { mapMutations } from 'vuex'
 
 Vue.config.productionTip = false;
 
@@ -33,6 +34,7 @@ new Vue({
     auth.onAuthStateChanged(user => {
       if(user) {
         user.getIdToken().then(r => {
+          console.log(r)
           const loggedInUser:User = {
             uid: user.uid,
             displayName: user.displayName === null ? '' : user.displayName,
@@ -41,14 +43,21 @@ new Vue({
             refreshToken: user.refreshToken,
             idToken: r
           }
-          this.$store.commit(`auth/${mutationTypes.USER_LOGGED_IN}`, loggedInUser)
+          this.userLoggedIn(loggedInUser)
         }).catch(e => {
           this.$store.commit(`auth/${mutationTypes.USER_LOGGED_OUT}`)
+          this.userLoggedOut()
         })
       } else {
-        this.$store.commit(`auth/${mutationTypes.USER_LOGGED_OUT}`)
+        this.userLoggedOut()
       }
      });
     },
+  methods: {
+    ...mapMutations({
+      'userLoggedIn': `auth/${mutationTypes.USER_LOGGED_IN}`,
+      'userLoggedOut': `auth/${mutationTypes.USER_LOGGED_OUT}`,
+    })
+  },
   render: h => h(App),
 }).$mount('#app');

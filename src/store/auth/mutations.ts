@@ -7,16 +7,19 @@ const mutations: MutationTree<AuthState> = {
     state.authError = ''
     state.user = payload
     state.showAuthDialog = false
+    state.isLoading = false
   },
   [mutationTypes.ERROR_ON_LOGIN](state, payload: string) {
     state.authError = payload
     state.user = undefined
     state.showAuthDialog = false
+    state.isLoading = false
   },
   [mutationTypes.USER_LOGGED_OUT](state) {
     state.authError = ''
     state.user = undefined
     state.showAuthDialog = false
+    state.isLoading = false
   },
   [mutationTypes.SHOW_AUTH_DIALOG](state) {
     state.showAuthDialog = true
