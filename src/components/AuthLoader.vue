@@ -1,10 +1,9 @@
 <template>
-    <v-dialog v-model="isLoading" hide-overlay persistent width="300">
-        <v-card color="primary" dark>
+    <v-dialog v-model="isLoading" persistent width="300" transition="dialog-bottom-transition">
+        <v-card color="primary" class="orange lighten-4">
             <v-card-text>
-                {{ isLoading }} Please stand by
+                Please stand by
                 <v-progress-linear indeterminate color="white" class="mb-0"></v-progress-linear>
-                {{ test }}
             </v-card-text>
         </v-card>
     </v-dialog>
@@ -27,10 +26,7 @@
         computed: {
             ...mapState({
                 isLoading: state => state.auth.isLoading,
-            }),
-            test() {
-                return this.$store.state.auth
-            }
+            })
         }
     }
 </script>
