@@ -7,24 +7,14 @@
 </template>
 
 <script>
-import axios from "@/configs/axios";
-
-export default {
-  methods: {
-    handleTest() {
-      axios
-        .get("http://localhost:8888/api/v1/user/profile", {
-          params: {
-            ID: 12345
-          }
-        })
-        .then(function(response) {
-          console.log(response);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+  import getAxios from "@/configs/axios";
+  
+  export default {
+    methods: {
+      handleTest() {
+        getAxios().get("api/v1/user/profile")
+          
+      }
     }
-  }
-};
+  };
 </script>
